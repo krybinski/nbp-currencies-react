@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import CurrencyItem from './../components/CurrencyItem';
+import CurrencyItem from './../../components/CurrencyItem/CurrencyItem';
 import { ListGroup } from 'reactstrap';
 
 import './CurrenciesList.css';

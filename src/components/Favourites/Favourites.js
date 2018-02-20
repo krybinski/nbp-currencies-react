@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeFavourite, clearFavourites } from './../actions/index';
-import CurrenciesList from './../containers/CurrenciesList';
+import { removeFavourite, clearFavourites } from './../../actions/index';
+import CurrenciesList from './../../containers/CurrenciesList/CurrenciesList';
 import { Button } from 'reactstrap';
 import './Favourites.css';
 

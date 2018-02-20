@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { showAll } from './../actions/index';
+import { showAll } from './actions/index';
 import './App.css';
 
 import { Container } from 'reactstrap';
 
-import Home from './Home';
-import Favourites from './Favourites';
-import Navbar from './Navbar';
+import Home from './components/Home/Home';
+import Favourites from './components/Favourites/Favourites';
+import Navbar from './components/Navbar/Navbar';
 
-import { getAllCurrencies } from './../api/currencies';
+import { getAllCurrencies } from './api/currencies';
 
 class App extends Component {
   componentWillMount() {

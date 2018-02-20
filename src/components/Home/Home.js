@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addFavourite } from './../actions/index';
-import CurrenciesList from './../containers/CurrenciesList';
+import { addFavourite } from './../../actions/index';
+import CurrenciesList from './../../containers/CurrenciesList/CurrenciesList';
 
 class Home extends Component {
   render() {
