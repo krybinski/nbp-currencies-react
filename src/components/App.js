@@ -16,6 +16,10 @@ import { getAllCurrencies } from './../api/currencies';
 
 class App extends Component {
   componentWillMount() {
+    this.loadCurrencies();
+  }
+
+  loadCurrencies() {
     getAllCurrencies().then(axios.spread((tableA, tableB) => {
       const rates = [...tableA.data[0].rates, ...tableB.data[0].rates];
       this.props.showAll(rates);

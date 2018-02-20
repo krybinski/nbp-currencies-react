@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   ListGroupItem,
   ListGroupItemHeading,
@@ -7,23 +8,34 @@ import {
 } from 'reactstrap';
 import './CurrencyItem.css';
 
-const CurrencyItem = ({ currency, clickCurrency, content }) => {
+const CurrencyItem = ({ currency, clickCurrency, content, btnDisabled }) => {
+  const color = btnDisabled ? 'default' : 'warning';
+
   return (
-    <ListGroupItem className="col-xs-12 col-sm-6 col-md-4">
+    <ListGroupItem className="col-xs-12 col-md-6 col-lg-4">
       <ListGroupItemHeading>
         {currency.code}
         <Button
           size="sm"
-          color="info"
-          onClick={() => clickCurrency(currency)}>
+          color={color}
+          onClick={() => clickCurrency(currency)}
+          disabled={btnDisabled}>
           {content}
         </Button>
       </ListGroupItemHeading>
       <ListGroupItemText>
-        {currency.currency}
+        <small>{currency.currency}</small>
       </ListGroupItemText>
+      <ListGroupItemText>MID: {currency.mid}</ListGroupItemText>
     </ListGroupItem>
   )
+};
+
+CurrencyItem.propTypes = {
+  currency: PropTypes.object.isRequired,
+  clickCurrency: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
+  btnDisabled: PropTypes.bool
 };
 
 export default CurrencyItem;

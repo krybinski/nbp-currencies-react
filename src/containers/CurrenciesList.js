@@ -12,12 +12,17 @@ class CurrenciesList extends Component {
     }
 
     return this.props.currencies.map(currency => {
+      const btnDisabled = this.props.favourites
+        ? this.props.favourites.includes(currency)
+        : false;
+
       return (
         <CurrencyItem
           key={currency.code}
           currency={currency}
           clickCurrency={this.props.clickCurrency}
-          content={this.props.content} />
+          content={this.props.content}
+          btnDisabled={btnDisabled} />
       );
     });
   }
@@ -29,6 +34,7 @@ class CurrenciesList extends Component {
 
 CurrenciesList.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.object),
+  favourites: PropTypes.arrayOf(PropTypes.object),
   clickCurrency: PropTypes.func.isRequired,
   content: PropTypes.string.isRequired
 }

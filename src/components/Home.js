@@ -12,8 +12,9 @@ class Home extends Component {
         <div className="clearfix">
           <CurrenciesList
             currencies={this.props.currencies}
+            favourites={this.props.favourites}
             clickCurrency={this.props.addFavourite}
-            content="Add to favourite"  />
+            content="Follow"  />
         </div>
       </section>
     );
@@ -22,7 +23,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    currencies: state.currencies
+    currencies: state.currencies,
+    favourites: state.favourites
   };
 };
 
