@@ -1,0 +1,7 @@
+.list-group-item {
+  float: left;
+}
+
+.list-group-item button {
+  margin-left: 1rem;
+}

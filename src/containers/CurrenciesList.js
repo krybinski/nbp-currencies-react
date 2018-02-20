@@ -1,29 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import {
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText,
-  Button
-} from 'reactstrap';
+import CurrencyItem from './../components/CurrencyItem';
+import { ListGroup } from 'reactstrap';
+
 import './CurrenciesList.css';
 
 class CurrenciesList extends Component {
   renderList() {
-    const { currencies, toogleFavourite } = this.props;
+    if (!this.props.currencies.length) {
+      return <div>No currencies</div>
+    }
 
-    return currencies.map(currency => {
+    return this.props.currencies.map(currency => {
       return (
-        <ListGroupItem
-          key={currency.code} onClick={() => toogleFavourite(currency)} className="col-xs-12 col-sm-6 col-md-4">
-          <ListGroupItemHeading>
-            {currency.code} <Button size="sm" color="info">Add to favourite</Button>
-          </ListGroupItemHeading>
-          <ListGroupItemText>
-            {currency.currency}
-          </ListGroupItemText>
-        </ListGroupItem>
+        <CurrencyItem
+          key={currency.code}
+          currency={currency}
+          clickCurrency={this.props.clickCurrency}
+          content={this.props.content} />
       );
     });
   }
@@ -34,8 +28,9 @@ class CurrenciesList extends Component {
 }
 
 CurrenciesList.propTypes = {
-  currencies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  toogleFavourite: PropTypes.func.isRequired
+  currencies: PropTypes.arrayOf(PropTypes.object),
+  clickCurrency: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired
 }
 
 export default CurrenciesList;

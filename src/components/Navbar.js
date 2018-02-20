@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-import { Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem, Badge } from 'reactstrap';
 
-const Navbar = () => {
-  return (
-    <Nav>
-      <NavItem>
-        <Link to="/" className="nav-link">All currencies</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/favourites" className="nav-link">Favourites</Link>
-      </NavItem>
-    </Nav>
-  );
+class Navbar extends Component {
+  render() {
+    return (
+      <Nav>
+        <NavItem>
+          <Link to="/" className="nav-link">
+            All currencies <Badge color="light">{this.props.currenciesCount}</Badge>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/favourites" className="nav-link">
+            Favourites <Badge color="light">{this.props.favouritesCount}</Badge>
+          </Link>
+        </NavItem>
+      </Nav>
+    );
+  }
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+  return {
+    currenciesCount: state.currencies.length,
+    favouritesCount: state.favourites.length
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

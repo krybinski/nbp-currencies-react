@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getCurrenciesByTableType = (tableType) => {
+export const getCurrenciesByTableType = tableType => {
   return axios.get(`https://api.nbp.pl/api/exchangerates/tables/${tableType}/`);
 };
 
