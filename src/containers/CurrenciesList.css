@@ -1,0 +1,7 @@
+.list-group {
+  display: block;
+}
+
+.list-group-item {
+  float: left;
+}
