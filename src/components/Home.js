@@ -11,7 +11,7 @@ class Home extends Component {
       currencies: [],
       favourites: []
     };
-    this.addToFavourite = this.addToFavourite.bind(this);
+    this.toogleFavourite = this.toogleFavourite.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +21,7 @@ class Home extends Component {
     }));
   }
 
-  addToFavourite(currency) {
+  toogleFavourite(currency) {
     this.setState({ favourites: [...this.state.favourites, currency] });
   }
 
@@ -30,7 +30,7 @@ class Home extends Component {
       <section>
         <h1 className="section-heading">All currencies</h1>
         <div className="content-wrapper clearfix">
-          <CurrenciesList currencies={this.state.currencies} addToFavourite={this.addToFavourite} />
+          <CurrenciesList currencies={this.state.currencies} toogleFavourite={this.toogleFavourite} />
         </div>
       </section>
     );
